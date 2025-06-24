@@ -114,15 +114,6 @@ const HomePage = () => {
               />
               <Search size={16} className="absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-400" />
             </div>
-
-            <button
-              type="submit"
-              aria-label="Search"
-              className="bg-black text-white text-sm font-medium px-4 py-2 rounded-md transition hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
-            >
-              Start
-            </button>
-
             <button
               type="button"
               className="border border-gray-300 text-gray-700 text-sm font-medium px-4 py-2 rounded-md transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black"

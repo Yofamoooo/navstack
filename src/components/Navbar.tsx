@@ -1,208 +1,345 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ChevronDown,
+  ChevronUp,
+  Menu,
+  X,
+  Home,
+  Layers,
+  Phone,
+} from 'lucide-react';
+
+const frameworks = [
+  {
+    name: 'Tailwind CSS',
+    icon: 'Tailwind CSS.png',
+    desc: 'Utility-first CSS framework.',
+    link: '#tailwind',
+  },
+  {
+    name: 'Bootstrap 5',
+    icon: 'Bootstrap.png',
+    desc: 'Responsive CSS components.',
+    link: '#bootstrap',
+  },
+];
 
 const Navbar = () => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [mobileSearchTerm, setMobileSearchTerm] = useState('');
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+  const toggleMobileDropdown = () => setIsMobileDropdownOpen((prev) => !prev);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrollProgress(progress);
     };
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    if (isDropdownOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isDropdownOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsDropdownOpen(false);
+        setIsMobileMenuOpen(false);
+        setIsMobileDropdownOpen(false);
+      }
     };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
-    // Close dropdown on click outside
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsDropdownOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+  return (
+    <>
+      {/* Scroll progress bar */}
+      <motion.div
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 z-[9999]"
+        style={{ width: `${scrollProgress}%` }}
+      />
 
-    // Add shadow on scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 10) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+      {/* Navbar */}
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 transition-all duration-300 ${
+          scrolled ? 'shadow-md border-b border-gray-200' : ''
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <a href="/" className="flex items-center text-2xl text-gray-800 font-bold">
+              <img
+                src="/images/logo.png"
+                alt="Logo"
+                className="w-30 h-30 mr-2"
+                loading="lazy"
+              />
+            </a>
 
-    return (
-        <motion.nav
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 transition-all duration-300 ${
-                scrolled ? 'shadow-md border-b border-gray-200' : ''
-            }`}
-        >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
-                    {/* Logo */}
-                    <div className="flex items-center text-2xl text-gray-600">
-                        <img src="/images/logo.png" alt="Logo" className="w-30 h-30" />
-                    </div>
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-8 items-center">
+              <motion.a
+                whileHover="hover"
+                href="#Getstarted"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-indigo-600 font-medium transition group"
+              >
+                <Home className="w-4 h-4 text-gray-500 group-hover:text-indigo-600 transition" />
+                Get Started
+                <motion.div
+                  layoutId="underline"
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                />
+              </motion.a>
 
-                    {/* Desktop Menu */}
-                    <div className="flex-1 justify-center text-right hidden md:flex space-x-6">
-                        <ul className="flex space-x-9 items-center">
-                            <li>
-                                <a href="#Getstarted" className="group text-sm transition-transform transform hover:scale-105">
-                                    <div className="flex justify-center mb-1">
-                                        <img src="/images/shuttle.png" className="w-4 h-4 grayscale" alt="icon" />
-                                    </div>
-                                    <span className="relative text-gray-600 group-hover:text-black">
-                                        Get Started
-                                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 rounded"></span>
-                                    </span>
-                                </a>
-                            </li>
+              {/* Dropdown Desktop */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={toggleDropdown}
+                  aria-expanded={isDropdownOpen}
+                  className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-indigo-600 font-medium group"
+                >
+                  <Layers className="w-4 h-4 text-gray-500 group-hover:text-indigo-600 transition" />
+                  Browse Navbars
+                  <ChevronDown className="w-4 h-4 ml-1" />
+                  <motion.div
+                    layoutId="underline"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                  />
+                </button>
 
-                            <li className="relative cursor-pointer" onClick={toggleDropdown}>
-                                <a href="#Browse" className="group text-sm transition-transform transform hover:scale-105">
-                                    <div className="flex justify-center mb-1">
-                                        <img src="/images/online.png" className="w-4 h-4" alt="icon" />
-                                    </div>
-                                    <div className="flex items-center space-x-1 text-gray-600 group-hover:text-black">
-                                        <span>Browse Navbars</span>
-                                        <svg className="w-3 h-3 rotate-90" fill="none" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                                            <polyline points="9 18 15 12 9 6" />
-                                        </svg>
-                                    </div>
-                                </a>
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-0 mt-2 w-[400px] max-h-[400px] overflow-auto bg-white shadow-xl rounded-xl p-4 z-30"
+                    >
+                      <input
+                        ref={inputRef}
+                        type="text"
+                        placeholder="Search frameworks..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full mb-4 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
 
-                                {/* Dropdown */}
-                                <div ref={dropdownRef}>
-                                    {isDropdownOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: -10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -10 }}
-                                            transition={{ duration: 0.2 }}
-                                            className="absolute left-0 mt-2 w-64 text-start bg-white shadow-xl rounded-md p-2 space-y-1 z-20"
-                                        >
-                                            <a href="#" className="flex justify-between p-3 rounded-md hover:bg-gray-100 hover:shadow transition-transform transform hover:scale-105">
-                                                <div className="flex space-x-3 items-center">
-                                                    <img src="/images/Tailwind CSS.png" className="w-4 h-4" />
-                                                    <div className="font-medium text-sm text-gray-900">Tailwind
-                                                        <div className="text-xs text-gray-500">Utility-first CSS framework.</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" className="flex justify-between p-3 rounded-md hover:bg-gray-100 hover:shadow transition-transform transform hover:scale-105">
-                                                <div className="flex space-x-3 items-center">
-                                                    <img src="/images/Bootstrap.png" className="w-4 h-4" />
-                                                    <div className="font-medium text-sm text-gray-900">Bootstrap 5
-                                                        <div className="text-xs text-gray-500">Responsive CSS components.</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </motion.div>
-                                    )}
+                      <div className="grid grid-cols-2 gap-4">
+                        {frameworks
+                          .filter((item) =>
+                            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+                          )
+                          .map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.link}
+                              className="flex gap-3 p-3 hover:bg-gray-100 rounded-lg transition transform hover:scale-[1.02]"
+                            >
+                              <img
+                                src={`/images/${item.icon}`}
+                                alt={item.name}
+                                className="w-5 h-5 mt-1"
+                                loading="lazy"
+                              />
+                              <div>
+                                <div className="font-medium text-sm text-gray-900">
+                                  {item.name}
                                 </div>
-                            </li>
+                                <div className="text-xs text-gray-500">{item.desc}</div>
+                              </div>
+                            </a>
+                          ))}
+                      </div>
 
-                            <li>
-                                <a href="#Contact" className="group text-sm transition-transform transform hover:scale-105">
-                                    <div className="flex justify-center mb-1">
-                                        <img src="/images/contact.png" className="w-4 h-4" alt="icon" />
-                                    </div>
-                                    <span className="relative text-gray-600 group-hover:text-black">
-                                        Contact me
-                                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 rounded"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Get Started Button */}
-                    <div className="hidden md:flex ml-6">
-                        <a href="#Getstarted" className="flex items-center font-semibold bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-sm px-5 py-2 rounded-full shadow-md hover:shadow-lg transform transition hover:scale-105">
-                            Get Started
+                      <div className="text-right mt-4">
+                        <a
+                          href="/all-frameworks"
+                          className="text-sm text-indigo-600 hover:underline"
+                        >
+                          See All Frameworks →
                         </a>
-                    </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                    {/* Mobile Button */}
-                    <div className="md:hidden">
-                        <button onClick={toggleMobileMenu} className="text-gray-700 focus:outline-none">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+              <motion.a
+                whileHover="hover"
+                href="#Contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-indigo-600 font-medium transition group"
+              >
+                <Phone className="w-4 h-4 text-gray-500 group-hover:text-indigo-600 transition" />
+                Contact
+                <motion.div
+                  layoutId="underline"
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                />
+              </motion.a>
+
+              <a
+                href="#Getstarted"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-full text-sm shadow-md font-medium transition"
+              >
+                Get Started
+              </a>
             </div>
 
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="md:hidden mobile-menu"
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+                className="text-gray-700"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </motion.button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-white px-6 py-6 space-y-5 border-t border-gray-200"
+            >
+              <a
+                href="#Getstarted"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2 text-gray-800 font-medium text-base hover:text-indigo-600 transition"
+              >
+                <Home size={18} />
+                Get Started
+              </a>
+
+              <div>
+                <button
+                  onClick={toggleMobileDropdown}
+                  className="flex items-center justify-between w-full text-gray-800 font-medium text-base hover:text-indigo-600"
+                  aria-expanded={isMobileDropdownOpen}
+                  aria-controls="mobile-dropdown"
                 >
-                    <ul className="flex flex-col items-center space-y-2 p-4">
-                        <li className="my-2 w-full p-4 border-b border-gray-300 cursor-pointer">
-                            <a href="#Getstarted" className="flex items-center space-x-2 text-sm transition-transform transform hover:scale-105">
-                                <img src="/images/shuttle.png" className="w-3 h-3" />
-                                <span>Get Started</span>
-                            </a>
-                        </li>
+                  <span className="flex items-center gap-2">
+                    <Layers size={18} />
+                    Browse Navbars
+                  </span>
+                  {isMobileDropdownOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                </button>
 
-                        <li className="my-2 w-full p-4 border-b border-gray-300 cursor-pointer">
-                            <button onClick={toggleDropdown} className="flex items-center space-x-2 text-sm w-full transition-transform transform hover:scale-105">
-                                <img src="/images/online.png" className="w-3 h-3" />
-                                <span>Browse Navbar</span>
-                                <svg className="ml-auto w-4 h-4 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </button>
+                <AnimatePresence>
+                  {isMobileDropdownOpen && (
+                    <motion.div
+                      id="mobile-dropdown"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="mt-3 space-y-2 pl-3 border-l border-gray-300"
+                    >
+                      <input
+                        type="text"
+                        placeholder="Search frameworks..."
+                        value={mobileSearchTerm}
+                        onChange={(e) => setMobileSearchTerm(e.target.value)}
+                        className="w-full mb-3 px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
 
-                            {isDropdownOpen && (
-                                <motion.ul
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="mt-2 space-y-2 text-sm px-5"
-                                >
-                                    <li>
-                                        <a href="#" className="block rounded m-2 px-4 py-2 hover:shadow hover:bg-gray-100 transition-transform transform hover:scale-105">Tailwind Navbar</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="block rounded m-2 px-4 py-2 hover:shadow hover:bg-gray-100 transition-transform transform hover:scale-105">Bootstrap Navbar</a>
-                                    </li>
-                                </motion.ul>
-                            )}
-                        </li>
+                      {frameworks
+                        .filter((item) =>
+                          item.name.toLowerCase().includes(mobileSearchTerm.toLowerCase())
+                        )
+                        .map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.link}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block text-sm text-gray-600 hover:text-indigo-500 transition"
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                        <li className="my-4">
-                            <a href="#Getstarted" className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-sm px-5 py-2 rounded-full shadow-md hover:shadow-lg transition transform hover:scale-105 flex items-center">
-                                Get Started
-                            </a>
-                        </li>
-                    </ul>
-                </motion.div>
-            )}
-        </motion.nav>
-    );
+              <a
+                href="#Contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2 text-gray-800 font-medium text-base hover:text-indigo-600 transition"
+              >
+                <Phone size={18} />
+                Contact
+              </a>
+
+              <a
+                href="#Getstarted"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-center bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow"
+              >
+                Get Started
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </>
+  );
 };
 
 export default Navbar;
