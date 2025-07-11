@@ -12,22 +12,12 @@ import {
   Phone,
 } from 'lucide-react';
 
-const frameworks = [
-  {
-    name: 'Tailwind CSS',
-    icon: 'Tailwind CSS.png',
-    desc: 'Utility-first CSS framework.',
-    link: '#tailwind',
-  },
-  {
-    name: 'Bootstrap 5',
-    icon: 'Bootstrap.png',
-    desc: 'Responsive CSS components.',
-    link: '#bootstrap',
-  },
-];
-
 const Navbar = () => {
+  const [frameworks, setFrameworks] = useState<{
+    name: string;
+    icon: string;
+    description: string;
+  }[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
@@ -41,6 +31,20 @@ const Navbar = () => {
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
   const toggleMobileDropdown = () => setIsMobileDropdownOpen((prev) => !prev);
+
+  useEffect(() => {
+    const fetchFrameworks = async () => {
+      try {
+        const res = await fetch('http://localhost:3001/api/frameworks');
+        const data = await res.json();
+        setFrameworks(data);
+      } catch (error) {
+        console.error('Failed to fetch frameworks:', error);
+      }
+    };
+
+    fetchFrameworks();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -110,7 +114,6 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
             <a href="/" className="flex items-center text-2xl text-gray-800 font-bold">
               <img
                 src="/images/logo.png"
@@ -125,31 +128,20 @@ const Navbar = () => {
               <motion.a
                 whileHover="hover"
                 href="#Getstarted"
-                onClick={() => setIsMobileMenuOpen(false)}
                 className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-indigo-600 font-medium transition group"
               >
                 <Home className="w-4 h-4 text-gray-500 group-hover:text-indigo-600 transition" />
                 Get Started
-                <motion.div
-                  layoutId="underline"
-                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                />
               </motion.a>
 
-              {/* Dropdown Desktop */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={toggleDropdown}
-                  aria-expanded={isDropdownOpen}
                   className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-indigo-600 font-medium group"
                 >
                   <Layers className="w-4 h-4 text-gray-500 group-hover:text-indigo-600 transition" />
                   Browse Navbars
                   <ChevronDown className="w-4 h-4 ml-1" />
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                  />
                 </button>
 
                 <AnimatePresence>
@@ -178,7 +170,7 @@ const Navbar = () => {
                           .map((item) => (
                             <a
                               key={item.name}
-                              href={item.link}
+                              href={`#${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                               className="flex gap-3 p-3 hover:bg-gray-100 rounded-lg transition transform hover:scale-[1.02]"
                             >
                               <img
@@ -188,22 +180,11 @@ const Navbar = () => {
                                 loading="lazy"
                               />
                               <div>
-                                <div className="font-medium text-sm text-gray-900">
-                                  {item.name}
-                                </div>
-                                <div className="text-xs text-gray-500">{item.desc}</div>
+                                <div className="font-medium text-sm text-gray-900">{item.name}</div>
+                                <p className="text-xs text-gray-500 line-clamp-2">{item.description}</p>
                               </div>
                             </a>
                           ))}
-                      </div>
-
-                      <div className="text-right mt-4">
-                        <a
-                          href="/all-frameworks"
-                          className="text-sm text-indigo-600 hover:underline"
-                        >
-                          See All Frameworks →
-                        </a>
                       </div>
                     </motion.div>
                   )}
@@ -213,33 +194,24 @@ const Navbar = () => {
               <motion.a
                 whileHover="hover"
                 href="#Contact"
-                onClick={() => setIsMobileMenuOpen(false)}
                 className="relative flex items-center gap-2 text-sm text-gray-700 hover:text-indigo-600 font-medium transition group"
               >
                 <Phone className="w-4 h-4 text-gray-500 group-hover:text-indigo-600 transition" />
                 Contact
-                <motion.div
-                  layoutId="underline"
-                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                />
               </motion.a>
 
               <a
                 href="#Getstarted"
-                onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-full text-sm shadow-md font-medium transition"
               >
                 Get Started
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden">
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={toggleMobileMenu}
-                aria-label="Toggle menu"
-                aria-expanded={isMobileMenuOpen}
                 className="text-gray-700"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -248,7 +220,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -260,7 +231,6 @@ const Navbar = () => {
             >
               <a
                 href="#Getstarted"
-                onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center gap-2 text-gray-800 font-medium text-base hover:text-indigo-600 transition"
               >
                 <Home size={18} />
@@ -271,8 +241,6 @@ const Navbar = () => {
                 <button
                   onClick={toggleMobileDropdown}
                   className="flex items-center justify-between w-full text-gray-800 font-medium text-base hover:text-indigo-600"
-                  aria-expanded={isMobileDropdownOpen}
-                  aria-controls="mobile-dropdown"
                 >
                   <span className="flex items-center gap-2">
                     <Layers size={18} />
@@ -284,7 +252,6 @@ const Navbar = () => {
                 <AnimatePresence>
                   {isMobileDropdownOpen && (
                     <motion.div
-                      id="mobile-dropdown"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -306,11 +273,14 @@ const Navbar = () => {
                         .map((item) => (
                           <a
                             key={item.name}
-                            href={item.link}
+                            href={`#${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="block text-sm text-gray-600 hover:text-indigo-500 transition"
                           >
-                            {item.name}
+                            <div className="font-medium">{item.name}</div>
+                            <div className="text-xs text-gray-500 line-clamp-2">
+                              {item.description}
+                            </div>
                           </a>
                         ))}
                     </motion.div>
@@ -320,7 +290,6 @@ const Navbar = () => {
 
               <a
                 href="#Contact"
-                onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center gap-2 text-gray-800 font-medium text-base hover:text-indigo-600 transition"
               >
                 <Phone size={18} />
@@ -329,7 +298,6 @@ const Navbar = () => {
 
               <a
                 href="#Getstarted"
-                onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-center bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow"
               >
                 Get Started
