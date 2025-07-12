@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer components {
+ .active-toggle {
+    background-color: rgb(255, 255, 255) !important;
+    color: black !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+}
+
+@layer animations {
+  .move-on-hover {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+  }
+  .move-on-hover:hover {
+      transform: translateY(-3px);
+  }
+}

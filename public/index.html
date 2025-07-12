@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta Tags -->
+    <title>NavStack — Responsive Navbar Component Library</title>
+    <meta name="title" content="NavStack — Responsive Navbar Component Library">
+    <meta name="description"
+        content="NavStack is a curated collection of modern, responsive, and reusable navbar components. Easily plug stylish navbars into your website using Tailwind CSS, Bootstrap, or Vanilla CSS.">
+
+    <!-- Keywords -->
+    <meta name="keywords"
+        content="navbar, navigation bar, nav, Tailwind navbar, Bootstrap navbar, responsive menu, HTML CSS nav, UI components, frontend">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://navstack.dev/">
+    <meta property="og:title" content="NavStack — Responsive Navbar Component Library">
+    <meta property="og:description"
+        content="Modern, reusable, and responsive navbar components for web developers. Easy to integrate, beautifully designed.">
+    <meta property="og:image" content="https://navstack.dev/cover.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://navstack.dev/">
+    <meta property="twitter:title" content="NavStack — Responsive Navbar Component Library">
+    <meta property="twitter:description"
+        content="Modern, reusable, and responsive navbar components for web developers. Easy to integrate, beautifully designed.">
+    <meta property="twitter:image" content="https://navstack.dev/cover.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/navstack.css">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="h-screen">
+            <!-- Navbar -->
+            <nav class="bg-white shadow-md">
+                <!-- Navbar for Desktop -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-20">
+                        <!-- Logo / Brand -->
+                        <div class="flex items-center text-2xl text-gray-600 move-on-hover">
+                            <img src="/assets/img/logo/logo.png" alt="Logo" class="w-30 h-30">
+                        </div>
+
+
+                        <!-- Menu -->
+                        <div class="flex-1 justify-center text-right hidden md:flex space-x-6">
+                            <ul class="flex space-x-9 items-center">
+
+                                <!-- Get Started -->
+                                <li class="block cursor-pointer move-on-hover">
+                                    <a class="text-sm focus:outline-none" href="#Getstarted">
+                                        <div class="flex justify-center mb-1">
+                                            <img src="/assets/img/icons/shuttle.png" alt="Pages Icon"
+                                                class="w-4 h-4 grayscale" />
+                                        </div>
+                                        <span class="text-gray-600">Get Started</span>
+                                    </a>
+                                </li>
+
+                                <!-- Browse Navbar -->
+                                <li class="relative cursor-pointer move-on-hover">
+                                    <a class="text-sm focus:outline-none" href="#Browse"
+                                        data-dropdown-button="browseDropdown">
+                                        <div class="flex justify-center mb-1">
+                                            <img src="/assets/img/icons/online.png" alt="Browse Icon" class="w-4 h-4" />
+                                        </div>
+                                        <div class="flex items-center space-x-1">
+                                            <span class="text-gray-600">Browse Navbars</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#6b7280"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="w-3 h-3 rotate-90" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </div>
+                                    </a>
+
+                                    <!-- Dropdown Menu -->
+                                    <div data-dropdown-menu="browseDropdown"
+                                        class="absolute left-0 mt-2 w-64 text-start bg-white shadow-xl rounded-md p-2 space-y-1 transform transition-all duration-200 ease-in-out opacity-0 scale-y-95 origin-top hidden z-20">
+
+                                        <!-- Tailwind Section -->
+                                        <a href=""
+                                            class="subdropdown-toggle flex justify-between p-3 rounded-md hover:bg-gray-100 hover:shadow select-none cursor-pointer"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <div class="flex space-x-3 items-center">
+                                                <img src="/assets/img/icons/Tailwind CSS.png" alt="TailwindCSS"
+                                                    class="w-4 h-4">
+                                                <div class="font-medium text-sm text-gray-900">
+                                                    Tailwind
+                                                    <div class="text-xs text-gray-500">Utility-first CSS framework.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#6b7280"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="w-4 h-4" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </a>
+
+                                        <!-- Tailwind Submenu -->
+                                        <nav class="subdropdown-menu absolute top-0 left-full ml-2 bg-white rounded-lg shadow-lg min-w-[14rem] opacity-0 pointer-events-none transition-opacity duration-200 z-50"
+                                            role="menu" aria-label="Tailwind Submenu">
+                                            <a href="/public/navbar-tailwind.html" role="menuitem"
+                                                class="block rounded m-2 px-4 py-2 text-sm hover:shadow text-gray-700 hover:bg-gray-100">Tailwind
+                                                Navbar</a>
+                                        </nav>
+
+                                        <!-- Bootstrap Section -->
+                                        <a href="#"
+                                            class="subdropdown-toggle flex justify-between p-3 rounded-md hover:bg-gray-100 hover:shadow select-none cursor-pointer"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <div class="flex space-x-3 items-center">
+                                                <img src="/assets/img/icons/Bootstrap.png" alt="Bootstrap"
+                                                    class="w-4 h-4">
+                                                <div class="font-medium text-sm text-gray-900">
+                                                    Bootstrap 5
+                                                    <div class="text-xs text-gray-500">Responsive CSS components.</div>
+                                                </div>
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#6b7280"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="w-4 h-4" viewBox="0 0 24 24">
+                                                <polyline points="9 18 15 12 9 6" />
+                                            </svg>
+                                        </a>
+
+                                        <!-- Bootstrap Submenu -->
+                                        <nav class="subdropdown-menu absolute top-0 left-full ml-2 bg-white rounded-lg shadow-lg min-w-[14rem] opacity-0 pointer-events-none transition-opacity duration-200 z-50"
+                                            role="menu" aria-label="Bootstrap Submenu">
+                                            <a href="#Getstarted" role="menuitem"
+                                                class="block rounded m-2 px-4 py-2 text-sm hover:shadow text-gray-700 hover:bg-gray-100">Bootstrap
+                                                Navbar</a>
+                                        </nav>
+                                    </div>
+                                </li>
+
+                                <!-- Tutorials -->
+                                <!-- <li class="block cursor-pointer move-on-hover">
+                            <a class="text-sm focus:outline-none" href="#Tutorials">
+                                <div class="flex justify-center mb-1">
+                                    <img src="/assets/img/icons/book.png" alt="Pages Icon" class="w-4 h-4" />
+                                </div>
+                                <span class="text-gray-600">Tutorials</span>
+                            </a>
+                        </li> -->
+
+                                <!-- Blog -->
+                                <!-- <li class="block cursor-pointer move-on-hover">
+                            <a class="text-sm focus:outline-none" href="#Blog">
+                                <div class="flex justify-center mb-1">
+                                    <img src="/assets/img/icons/computer.png" alt="Pages Icon" class="w-4 h-4" />
+                                </div>
+                                <span class="text-gray-600">Blog</span>
+                            </a>
+                        </li> -->
+
+                                <!-- About -->
+                                <!-- <li class="block cursor-pointer move-on-hover">
+                            <a class="text-sm focus:outline-none" href="#About">
+                                <div class="flex justify-center mb-1">
+                                    <img src="/assets/img/icons/info-button.png" alt="Pages Icon" class="w-4 h-4" />
+                                </div>
+                                <span class="text-gray-600">About us</span>
+                            </a>
+                        </li> -->
+
+                                <!-- Contact -->
+                                <li class="block cursor-pointer move-on-hover">
+                                    <a class="text-sm focus:outline-none" href="#Contact">
+                                        <div class="flex justify-center mb-1">
+                                            <img src="/assets/img/icons/contact.png" alt="Pages Icon" class="w-4 h-4" />
+                                        </div>
+                                        <span class="text-gray-600">Contact me</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <!-- Button Get Started -->
+                            <a href="#Getstarted"
+                                class="hidden md:flex ml-6 font-semibold bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 move-on-hover">
+                                Get Started
+                            </a>
+                        </div>
+
+                        <!-- Mobile Menu Button -->
+                        <div class="md:hidden">
+                            <button class="text-gray-700 focus:outline-none menu-toggle" data-target="mobile-menu-1">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16m-7 6h7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navbar For Mobile -->
+                <div class="hidden md:hidden mobile-menu" id="mobile-menu-1">
+                    <ul class="flex flex-col items-center space-y-2 p-4">
+                        <!-- Get Started -->
+
+                        <li class="my-2 w-full p-4 border-b-1 border-gray-300 cursor-pointer ">
+                            <!-- Dropdown Button -->
+                            <a href="#Getstarted" class="mobiledropdown-btn flex items-center space-x-2 text-sm w-full"
+                                aria-expanded="false">
+                                <img src="/assets/img/icons/shuttle.png" alt="Pages Icon" class="w-3 h-3" />
+                                <span>Get Started</span>
+                            </a>
+                        </li>
+
+                        <!-- Section Menu Mobile -->
+
+                        <li class="my-2 w-full p-4 border-b-1 border-gray-300 cursor-pointer">
+                            <!-- Dropdown Button -->
+                            <button type="button" class="mobiledropdown-btn flex items-center space-x-2 text-sm w-full"
+                                aria-expanded="false">
+                                <img src="/assets/img/icons/online.png" alt="Pages Icon" class="w-3 h-3" />
+                                <span>Browse Navbar</span>
+                                <svg class="mobiledropdown-icon ml-auto w-4 h-4 text-gray-600 transition-transform duration-200"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            <!-- Dropdown Menu -->
+                            <ul class="mobiledropdown-menu mt-2 space-y-2 text-gray-700 text-sm hidden px-5">
+                                <!-- Page Section -->
+                                <li>
+                                    <!-- SubDropdown Button -->
+                                    <a href="#"
+                                        class="mobiledropdown-btn flex justify-between p-3 rounded-md hover:bg-gray-100 hover:shadow select-none cursor-pointer"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <div>
+                                            <div class="font-medium text-sm text-gray-900">
+                                                Tailwind
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                                Utility-first CSS framework.
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <!-- Chevron right icon -->
+                                            <svg class="mobiledropdown-icon ml-auto w-4 h-4 text-gray-600 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <!-- SubDropdown Sub Menu -->
+                                    <ul class="mobiledropdown-menu mt-2 space-y-2 text-gray-700 text-sm hidden">
+                                        <li>
+                                            <a href="/public/navbar-tailwind.html" role="menuitem"
+                                                class="block rounded m-2 px-4 py-2 text-sm hover:shadow text-gray-700 hover:bg-gray-100">
+                                                Tailwind Navbar</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <!-- SubDropdown Button -->
+                                    <a href="#"
+                                        class="mobiledropdown-btn flex justify-between p-3 rounded-md hover:bg-gray-100 hover:shadow select-none cursor-pointer"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <div>
+                                            <div class="font-medium text-sm text-gray-900">
+                                                Bootstrap
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                                Responsive CSS components.
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <!-- Chevron right icon -->
+                                            <svg class="mobiledropdown-icon ml-auto w-4 h-4 text-gray-600 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <!-- SubDropdown Sub Menu -->
+                                    <ul class="mobiledropdown-menu mt-2 space-y-2 text-gray-700 text-sm hidden">
+                                        <li>
+                                            <a href="#" role="menuitem"
+                                                class="block rounded m-2 px-4 py-2 text-sm hover:shadow text-gray-700 hover:bg-gray-100">
+                                                Bootstrap Navbar</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Get Started Button for Mobile -->
+
+                        <li class="my-4">
+                            <a href="#"
+                                class="bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition">
+                                Get Started
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Home Page -->
+            <div class="flex items-center py-12 px-6">
+                <div
+                    class="container mx-auto max-w-[1200px] flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+                    <!-- Text content -->
+                    <div class="fade-in-left flex-1 max-w-xl text-center md:text-left text-gray-900">
+                        <h1 class="font-extrabold leading-tight text-4xl sm:text-5xl md:text-6xl">
+                            Build Powerful, Navbar Components
+                        </h1>
+                        <p class="mt-6 text-gray-600 max-w-lg text-base sm:text-lg md:text-xl mx-auto md:mx-0">
+                            Responsive navigation bars effortlessly with our modern navbar component
+                            library designed for developers seeking reusable, easy-to-integrate UI solutions
+                        </p>
+
+                        <form
+                            class="mt-10 flex flex-col sm:flex-row max-w-md mx-auto md:mx-0 rounded-xl shadow-md bg-white overflow-hidden move-on-hover">
+                            <label for="search" class="sr-only">Search Navbar</label>
+                            <input type="search" id="search" name="search" placeholder="Search Navbar..."
+                                autocomplete="off"
+                                class="flex-grow px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-black" />
+                            <button type="submit" aria-label="Search"
+                                class="mt-3 sm:mt-0 sm:ml-2 bg-black text-white font-semibold px-6 py-3 transition hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Image with SVG background -->
+                    <div class="relative w-[400px] h-[400px] rounded-2xl overflow-hidden hidden md:flex justify-end">
+                        <!-- SVG Background -->
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1440 800"
+                            xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                            <defs>
+                                <!-- Gradasi hitam ke abu-abu gelap -->
+                                <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#000000" />
+                                    <stop offset="100%" stop-color="#222222" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#gradient)" />
+
+                            <path id="wave1" d="M0,600 Q360,700 720,600 T1440,600 V800 H0 Z"
+                                fill="rgba(255, 255, 255, 0.05)" />
+                            <path id="wave2" d="M0,500 Q360,600 720,500 T1440,500 V800 H0 Z"
+                                fill="rgba(255, 255, 255, 0.07)" />
+                            <path id="wave3" d="M0,400 Q360,500 720,400 T1440,400 V800 H0 Z"
+                                fill="rgba(255, 255, 255, 0.1)" />
+                        </svg>
+
+                        <!-- Foreground Image -->
+                        <img src="/assets/img/3d.png" alt="3D Navbar Illustration"
+                            class="relative z-10 max-w-full h-auto object-contain select-none" loading="lazy"
+                            draggable="false" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1 -->
+    <section class="h-screen max-w-7xl flex justify-center">
+        <article class="p-8 sm:p-10 lg:p-14 flex flex-col items-center text-center space-y-8 fade-in-bottom"
+            aria-labelledby="about-navstack-heading">
+            <!-- Icon -->
+            <div aria-hidden="true" class="w-16 h-16 sm:w-20 sm:h-20 text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="w-full h-full mx-auto">
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="12 6 15 12 12 18 9 12 12 6" />
+                </svg>
+            </div>
+
+            <!-- Heading -->
+            <h2 id="about-navstack-heading"
+                class="text-gray-900 font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl">
+                About NavStack
+            </h2>
+
+            <!-- Description -->
+            <p class="max-w-3xl text-gray-600 text-base sm:text-lg lg:text-xl leading-relaxed">
+                NavStack provides ready-to-use navbar components and high-quality design templates built with
+                Tailwind CSS 4 or Bootstrap 5. Whether you’re building a simple site or a complex web application,
+                our responsive navigation solutions enhance your UI and increase development speed.
+            </p>
+
+            <!-- CTA -->
+            <a href="#Getstarted"
+                class="inline-block bg-gray-900 text-white font-semibold px-8 py-2 rounded-xl shadow-lg hover:bg-gray-800 transition duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300 text-base sm:text-lg lg:text-xl move-on-hover"
+                title="Explore our navbar components">
+                Explore Navbars
+            </a>
+        </article>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="h-full md:h-screen flex justify-center items-start">
+        <article class="p-5 sm:p-10 lg:p-14 flex flex-col md:flex-row items-center gap-10 fade-in-bottom"
+            aria-labelledby="why-navstack-heading">
+
+            <!-- Text Info -->
+            <div class="flex-1 space-y-6 text-center md:text-left">
+                <h3 id="why-navstack-heading"
+                    class="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+                    Why Choose NavStack?
+                </h3>
+                <ul
+                    class="list-disc list-inside text-gray-600 space-y-3 text-base sm:text-lg lg:text-xl leading-relaxed">
+                    <li>Fully customizable navbar components for every use case</li>
+                    <li>Modern design built with Tailwind CSS 4 and Bootstrap 5</li>
+                    <li>Responsive, accessible, and performance-optimized code</li>
+                    <li>Regularly updated with the latest best practices</li>
+                    <li>Ideal for developers who need efficient UI building blocks</li>
+                    <li>Easy to copy and download</li>
+                </ul>
+            </div>
+
+            <figure class="w-full max-w-xs sm:max-w-sm lg:max-w-md rounded-2xl shadow-lg overflow-hidden aspect-[4/3]">
+                <img src="/assets/img/bg-2.png" alt="Illustration of modern web navigation design" loading="lazy"
+                    class="w-full h-full object-cover object-center" onmouseenter="this.src='/assets/img/bg1.png';"
+                    onmouseleave="this.src='/assets/img/bg-2.png';" />
+            </figure>
+        </article>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="h-full mb-30">
+        <h2
+            class="text-2xl sm:text-3xl lg:text-4xl mt-30 md:mt-0 font-extrabold text-gray-900 mb-10 text-center leading-tight fade-in-bottom">
+            Navbar Types Explained
+        </h2>
+        <div class="max-w-7xl p-5 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 fade-in-bottom">
+            <!-- CARD 1 -->
+            <article class="shadow-lg rounded-2xl group move-on-hover" role="region" aria-labelledby="dropdown-title">
+                <div class="relative w-full aspect-video bg-gray-50">
+
+                    <!-- Gambar -->
+                    <img src="/assets/img/tutorials/tutorial.png" alt="Dropdown Navbar Icon"
+                        class="absolute inset-0 w-full h-full object-cover object-top z-10 transition-opacity duration-300 group-hover:opacity-0" />
+
+                    <!-- Overlay dengan Icon dan Teks -->
+                    <div
+                        class="absolute inset-0 z-20 bg-black/40 flex flex-col items-center justify-center text-white text-center opacity-100 transition-opacity duration-300 group-hover:opacity-0">
+                        <img src="/assets/img/icons/touch-screen.png" alt="" srcset="" class="w-7 h-7">
+                        <p class="text-sm font-medium">Hover to preview</p>
+                    </div>
+
+                    <!-- Video -->
+                    <video
+                        class="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        muted playsinline preload="auto" data-maxduration="5">
+                        <source src="/assets/vidios/dropdown-navbar.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                    <h2 id="dropdown-title" class="text-gray-900 mb-2 font-bold text-lg sm:text-xl">Dropdown Navbar</h2>
+                    <p class="text-sm sm:text-base text-gray-700">
+                        Contains menu items that expand or collapse on interaction to reveal nested navigation options.
+                    </p>
+                </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="shadow-lg rounded-2xl group move-on-hover" role="region" aria-labelledby="static-title">
+                <div class="relative w-full aspect-video bg-gray-50">
+                    <img src="/assets/img/tutorials/tutorial.png" alt="Static Navbar Icon"
+                        class="absolute inset-0 w-full h-full object-cover object-top z-10 transition-opacity duration-300 group-hover:opacity-0" />
+                    <div
+                        class="absolute inset-0 z-20 bg-black/40 flex flex-col items-center justify-center text-white text-center opacity-100 transition-opacity duration-300 group-hover:opacity-0">
+                        <img src="/assets/img/icons/touch-screen.png" alt="" srcset="" class="w-7 h-7">
+                        <p class="text-sm font-medium">Hover to preview</p>
+                    </div>
+                    <video
+                        class="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        muted playsinline preload="auto" data-maxduration="5">
+                        <source src="/assets/vidios/static-navbar.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                    <h2 id="static-title" class="text-gray-900 mb-2 font-bold text-lg sm:text-xl">Static Navbar</h2>
+                    <p class="text-sm sm:text-base text-gray-700">
+                        Remains fixed relative to page content; it doesn’t move when scrolling and stays put in its
+                        initial position.
+                    </p>
+                </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="shadow-lg rounded-2xl group move-on-hover" role="region" aria-labelledby="sticky-title">
+                <div class="relative w-full aspect-video bg-gray-50">
+                    <img src="/assets/img/tutorials/tutorial.png" alt="Sticky Navbar Icon"
+                        class="absolute inset-0 w-full h-full object-cover object-top z-10 transition-opacity duration-300 group-hover:opacity-0" />
+                    <div
+                        class="absolute inset-0 z-20 bg-black/40 flex flex-col items-center justify-center text-white text-center opacity-100 transition-opacity duration-300 group-hover:opacity-0">
+                        <img src="/assets/img/icons/touch-screen.png" alt="" srcset="" class="w-7 h-7">
+                        <p class="text-sm font-medium">Hover to preview</p>
+                    </div>
+                    <video
+                        class="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        muted playsinline preload="auto" data-maxduration="5">
+                        <source src="/assets/vidios/sticky-navbar.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                    <h2 id="sticky-title" class="text-gray-900 mb-2 font-bold text-lg sm:text-xl">Sticky Navbar</h2>
+                    <p class="text-sm sm:text-base text-gray-700">
+                        Stays visible fixed at the top of the viewport when scrolling for constant navigation access.
+                    </p>
+                </div>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="shadow-lg rounded-2xl group move-on-hover" role="region" aria-labelledby="fixed-title">
+                <div class="relative w-full aspect-video bg-gray-50">
+                    <img src="/assets/img/tutorials/tutorial.png" alt="Fixed Navbar Icon"
+                        class="absolute inset-0 w-full h-full object-cover object-top z-10 transition-opacity duration-300 group-hover:opacity-0" />
+                    <div
+                        class="absolute inset-0 z-20 bg-black/40 flex flex-col items-center justify-center text-white text-center opacity-100 transition-opacity duration-300 group-hover:opacity-0">
+                        <img src="/assets/img/icons/touch-screen.png" alt="" srcset="" class="w-7 h-7">
+                        <p class="text-sm font-medium">Hover to preview</p>
+                    </div>
+                    <video
+                        class="absolute inset-0 w-full h-full object-cover object-top z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        muted playsinline preload="auto" data-maxduration="5">
+                        <source src="/assets/vidios/fixed-navbar.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                    <h2 id="fixed-title" class="text-gray-900 mb-2 font-bold text-lg sm:text-xl">Fixed Navbar</h2>
+                    <p class="text-sm sm:text-base text-gray-700">
+                        Anchored to a spot on the screen and never moves, overlaying content but remaining accessible.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Navbar Dark -->
+    <section id="Getstarted" class="toggle-section max-w-6xl mx-auto px-5">
+        <div class="flex justify-between my-5">
+            <!-- Name Navbar -->
+            <div
+                class="flex relative items-center bg-black text-white px-6 py-3 rounded-full shadow-lg hover:bg-gray-800 transition duration-300 shine-effect">
+                <!-- Label Dark Mode -->
+                <span
+                    class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 bg-yellow-400 text-black text-xs font-semibold px-2 py-0.5 rounded-full shadow">
+                    Dark Mode
+                </span>
+                <h1 class="font-semibold">Navbars Dark</h1>
+            </div>
+
+            <!-- Toggle Buttons -->
+            <div role="group" class="toggle-group inline-flex rounded-3xl bg-gray-300 p-1 shadow-sm select-none">
+                <button type="button"
+                    class="preview-btn active-toggle flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-transform">
+                    <i class="fas fa-desktop text-gray-600 text-base"></i>
+                    <span>Preview</span>
+                </button>
+                <button type="button"
+                    class="code-btn flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-colors">
+                    <i class="fas fa-code text-gray-600 text-base"></i>
+                    <span>Code</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-container w-full">
+            <!-- Preview -->
+            <div
+                class="preview-content flex justify-center h-60 shadow-xl select-none rounded-xl bg-white p-4 overflow-auto">
+                <div class="w-full">
+                    <!-- Navbar -->
+                    <nav class="bg-gradient-to-r from-black to-gray-950 text-white shadow-xl">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex items-center justify-between h-16">
+                                <div class="flex items-center font-bold">
+                                    Yofamo Kit Pro
+                                </div>
+                                <div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6">
+                                    <ul class="flex space-x-14">
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/dashboard-white.png" alt="Pages Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Pages</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/sections-white.png" alt="Section Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Section</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/docs-white.png" alt="Docs Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Docs</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a href="#"
+                                        class="ml-6 bg-white text-black text-sm px-4 py-2 rounded-4xl shadow-md hover:bg-gray-500 move-on-hover">Buy
+                                        Now</a>
+                                </div>
+                                <!-- Mobile Button -->
+                                <div class="md:hidden">
+                                    <button class="text-white focus:outline-none menu-toggle"
+                                        data-target="mobile-menu-5">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 6h16M4 12h16m-7 6h7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="hidden md:hidden mobile-menu" id="mobile-menu-5">
+                            <ul class="flex flex-col items-center space-y-2 p-4">
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/dashboard-white.png" alt="Pages Icon"
+                                            class="w-3 h-3" />
+                                        <span>Pages</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/sections-white.png" alt="Section Icon"
+                                            class="w-3 h-3" />
+                                        <span>Section</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/docs-white.png" alt="Docs Icon" class="w-3 h-3" />
+                                        <span>Docs</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#"
+                                        class="bg-white font-semibold text-black text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition">Buy
+                                        Now</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="relative code-content hidden bg-gray-950 rounded-xl p-4 shadow-lg border border-gray-800">
+                <!-- Header Buttons -->
+                <div class="flex justify-between items-center mb-4">
+                    <!-- Framework Switch -->
+                    <div class="space-x-2">
+                        <button
+                            class="framework-btn btn-tailwind bg-blue-700 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Tailwind
+                        </button>
+                        <button
+                            class="framework-btn btn-bootstrap bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Bootstrap
+                        </button>
+                    </div>
+                    <!-- Control Buttons -->
+                    <div class="space-x-2">
+                        <button
+                            class="copy-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Copy
+                        </button>
+                        <button
+                            class="show-html-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            HTML
+                        </button>
+                        <button
+                            class="show-js-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            JS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tailwind Code -->
+                <div class="code-tailwind">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Navbar Tailwind --&gt;
+&lt;nav class="bg-gradient-to-r from-black to-gray-950 text-white shadow-xl"&gt;
+    &lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;
+        &lt;div class="flex items-center justify-between h-16"&gt;
+            &lt;div class="flex items-center font-bold"&gt;
+                Yofamo Kit Pro
+            &lt;/div&gt;
+            &lt;div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6"&gt;
+                &lt;ul class="flex space-x-14"&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/dashboard-white.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Pages&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/sections-white.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Section&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/docs-white.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Docs&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;a href="#" class="ml-6 bg-white text-black text-sm px-4 py-2 rounded-4xl shadow-md hover:bg-gray-500 move-on-hover"&gt;
+                    Buy Now
+                &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;!-- Mobile Button --&gt;
+            &lt;div class="md:hidden"&gt;
+                &lt;button class="text-white focus:outline-none menu-toggle" data-target="mobile-menu-5"&gt;
+                    &lt;svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Mobile Menu --&gt;
+    &lt;div class="hidden md:hidden mobile-menu" id="mobile-menu-5"&gt;
+        &lt;ul class="flex flex-col items-center space-y-2 p-4"&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/dashboard-white.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Pages&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/sections-white.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Section&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/docs-white.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Docs&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="bg-white font-semibold text-black text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition"&gt;
+                    Buy Now
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>
+// Toggle mobile menu
+document.querySelectorAll('.menu-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const menu = document.getElementById(targetId);
+        menu.classList.toggle('hidden');
+    });
+});
+</code>
+        </pre>
+                </div>
+
+                <!-- Bootstrap Code -->
+                <div class="code-bootstrap hidden">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>
+&lt;!-- Navbar Bootstrap--&gt;
+&lt;nav class="navbar navbar-expand-lg navbar-dark bg-gradient"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;a class="navbar-brand font-bold" href="#"&gt;Yofamo Kit Pro&lt;/a&gt;
+        &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+            &lt;ul class="navbar-nav me-auto mb-2 mb-lg-0"&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;
+                        &lt;img src="/assets/img/icons/dashboard-white.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                        Pages
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;
+                        &lt;img src="/assets/img/icons/sections-white.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                        Section
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;
+                        &lt;img src="/assets/img/icons/docs-white.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                        Docs
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;a href="#" class="btn btn-light text-black rounded-4xl shadow-md"&gt;Buy Now&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>// Bootstrap JS 
+    NO - Code
+</code>
+        </pre>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <!-- Navbar Light -->
+    <section class="mt-20 toggle-section max-w-6xl px-5 mx-auto">
+        <div class="flex justify-between my-5">
+            <!-- Name Navbar -->
+            <div
+                class="flex relative items-center bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-green-500 hover:text-white transition duration-300 shine-effect">
+                <!-- Label Original -->
+                <span
+                    class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 bg-green-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
+                    Original
+                </span>
+                <h1 class="font-semibold">Navbar Light</h1>
+            </div>
+
+            <!-- Toggle Buttons -->
+            <div role="group" class="toggle-group inline-flex rounded-3xl bg-gray-300 p-1 shadow-sm select-none">
+                <button type="button"
+                    class="preview-btn active-toggle flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-transform">
+                    <i class="fas fa-desktop text-gray-600 text-base"></i>
+                    <span>Preview</span>
+                </button>
+                <button type="button"
+                    class="code-btn flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-colors">
+                    <i class="fas fa-code text-gray-600 text-base"></i>
+                    <span>Code</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-container w-full">
+            <!-- Preview -->
+            <div
+                class="preview-content flex justify-center h-60 shadow-xl select-none rounded-xl bg-white p-4 overflow-auto">
+                <div class="w-full">
+                    <!-- Navbar -->
+                    <nav class="bg-white text-black shadow-xl">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex items-center justify-between h-16">
+                                <div class="flex items-center font-bold">
+                                    Yofamo Kit Pro
+                                </div>
+                                <div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6">
+                                    <ul class="flex space-x-14">
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/dashboard.png" alt="Pages Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Pages</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/sections.png" alt="Section Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Section</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" />
+                                                <span>Docs</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a href="#"
+                                        class="ml-6 bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-md hover:bg-gray-500 move-on-hover">Buy
+                                        Now</a>
+                                </div>
+                                <!-- Mobile Button -->
+                                <div class="md:hidden">
+                                    <button class="text-black focus:outline-none menu-toggle"
+                                        data-target="mobile-menu-2">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 6h16M4 12h16m-7 6h7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="hidden md:hidden mobile-menu" id="mobile-menu-2">
+                            <ul class="flex flex-col items-center space-y-2 p-4">
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" />
+                                        <span>Pages</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" />
+                                        <span>Section</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" />
+                                        <span>Docs</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#"
+                                        class="bg-black font-semibold text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition">Buy
+                                        Now</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="relative code-content hidden bg-gray-950 rounded-xl p-4 shadow-lg border border-gray-800">
+                <!-- Header Buttons -->
+                <div class="flex justify-between items-center mb-4">
+                    <!-- Framework Switch -->
+                    <div class="space-x-2">
+                        <button
+                            class="framework-btn btn-tailwind bg-blue-700 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Tailwind
+                        </button>
+                        <button
+                            class="framework-btn btn-bootstrap bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Bootstrap
+                        </button>
+                    </div>
+                    <!-- Control Buttons -->
+                    <div class="space-x-2">
+                        <button
+                            class="copy-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Copy
+                        </button>
+                        <button
+                            class="show-html-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            HTML
+                        </button>
+                        <button
+                            class="show-js-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            JS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tailwind Code -->
+                <div class="code-tailwind">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Navbar Tailwind --&gt;
+&lt;nav class="bg-white text-black shadow-xl"&gt;
+    &lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;
+        &lt;div class="flex items-center justify-between h-16"&gt;
+            &lt;div class="flex items-center font-bold"&gt;
+                Yofamo Kit Pro
+            &lt;/div&gt;
+            &lt;div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6"&gt;
+                &lt;ul class="flex space-x-14"&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Pages&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Section&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Docs&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;a href="#" class="ml-6 bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-md hover:bg-gray-500 move-on-hover"&gt;Buy Now&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="md:hidden"&gt;
+                &lt;button class="text-black focus:outline-none menu-toggle" data-target="mobile-menu-2"&gt;
+                    &lt;svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="hidden md:hidden mobile-menu" id="mobile-menu-2"&gt;
+        &lt;ul class="flex flex-col items-center space-y-2 p-4"&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Pages&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Section&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Docs&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="bg-black font-semibold text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition"&gt;Buy Now&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>
+// Toggle mobile menu
+document.querySelectorAll('.menu-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const menu = document.getElementById(targetId);
+        menu.classList.toggle('hidden');
+    });
+});
+</code>
+        </pre>
+                </div>
+
+                <!-- Bootstrap Code -->
+                <div class="code-bootstrap hidden">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Bootstrap 5 Navbar --&gt;
+&lt;nav class="navbar navbar-expand-md bg-white shadow-sm"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;span class="navbar-brand fw-bold"&gt;Yofamo Kit Pro&lt;/span&gt;
+        &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"&gt;
+            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse justify-content-end" id="navbarContent"&gt;
+            &lt;ul class="navbar-nav align-items-center me-3"&gt;
+                &lt;li class="nav-item mx-3"&gt;
+                    &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+                        &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" width="14" height="14" /&gt;
+                        &lt;span&gt;Pages&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item mx-3"&gt;
+                    &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+                        &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" width="14" height="14" /&gt;
+                        &lt;span&gt;Section&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item mx-3"&gt;
+                    &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+                        &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" width="14" height="14" /&gt;
+                        &lt;span&gt;Docs&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;a href="#" class="btn btn-dark rounded-pill px-4 py-2 shadow-sm small"&gt;Buy Now&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>// Bootstrap JS 
+    NO - Code
+</code>
+        </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navbar Transparant -->
+    <section class="mt-20 toggle-section max-w-6xl px-5 mx-auto">
+        <div class="flex justify-between my-5">
+            <!-- Name Navbar -->
+            <div
+                class="flex relative items-center bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-green-500 hover:text-white transition duration-300 shine-effect">
+                <!-- Label Top -->
+                <span
+                    class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 bg-green-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
+                    Top
+                </span>
+                <h1 class="font-semibold">Navbar Transparant</h1>
+            </div>
+
+            <!-- Toggle Buttons -->
+            <div role="group" class="toggle-group inline-flex rounded-3xl bg-gray-300 p-1 shadow-sm select-none">
+                <button type="button"
+                    class="preview-btn active-toggle flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-transform">
+                    <i class="fas fa-desktop text-gray-600 text-base"></i>
+                    <span>Preview</span>
+                </button>
+                <button type="button"
+                    class="code-btn flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-colors">
+                    <i class="fas fa-code text-gray-600 text-base"></i>
+                    <span>Code</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-container w-full">
+            <!-- Preview -->
+            <div
+                class="preview-content flex justify-center h-60 shadow-xl select-none rounded-xl bg-white p-4 overflow-auto">
+                <div class="w-full">
+                    <!-- Navbar -->
+                    <nav class="bg-transparent text-black">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex items-center justify-between h-16">
+                                <div class="flex items-center font-bold">
+                                    Yofamo Kit Pro
+                                </div>
+                                <div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6">
+                                    <ul class="flex space-x-14">
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/dashboard.png" alt="Pages Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Pages</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/sections.png" alt="Section Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Section</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" />
+                                                <span>Docs</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a href="#"
+                                        class="ml-6 bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-md hover:bg-gray-500 move-on-hover">Buy
+                                        Now</a>
+                                </div>
+                                <!-- Mobile Button -->
+                                <div class="md:hidden">
+                                    <button class="text-black focus:outline-none menu-toggle"
+                                        data-target="mobile-menu-3">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 6h16M4 12h16m-7 6h7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="hidden md:hidden mobile-menu" id="mobile-menu-3">
+                            <ul class="flex flex-col items-center space-y-2 p-4">
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" />
+                                        <span>Pages</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" />
+                                        <span>Section</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" />
+                                        <span>Docs</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#"
+                                        class="bg-black font-semibold text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition">Buy
+                                        Now</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="relative code-content hidden bg-gray-950 rounded-xl p-4 shadow-lg border border-gray-800">
+                <!-- Header Buttons -->
+                <div class="flex justify-between items-center mb-4">
+                    <!-- Framework Switch -->
+                    <div class="space-x-2">
+                        <button
+                            class="framework-btn btn-tailwind bg-blue-700 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Tailwind
+                        </button>
+                        <button
+                            class="framework-btn btn-bootstrap bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Bootstrap
+                        </button>
+                    </div>
+                    <!-- Control Buttons -->
+                    <div class="space-x-2">
+                        <button
+                            class="copy-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Copy
+                        </button>
+                        <button
+                            class="show-html-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            HTML
+                        </button>
+                        <button
+                            class="show-js-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            JS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tailwind Code -->
+                <div class="code-tailwind">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Navbar Tailwind --&gt;
+&lt;nav class="bg-transparent text-black"&gt;
+    &lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;
+        &lt;div class="flex items-center justify-between h-16"&gt;
+            &lt;div class="flex items-center font-bold"&gt;
+                Yofamo Kit Pro
+            &lt;/div&gt;
+            &lt;div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6"&gt;
+                &lt;ul class="flex space-x-14"&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Pages&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Section&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="move-on-hover"&gt;
+                        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                            &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                            &lt;span&gt;Docs&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;a href="#" class="ml-6 bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-md hover:bg-gray-500 move-on-hover"&gt;
+                    Buy Now
+                &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;!-- Mobile Button --&gt;
+            &lt;div class="md:hidden"&gt;
+                &lt;button class="text-black focus:outline-none menu-toggle" data-target="mobile-menu-3"&gt;
+                    &lt;svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+                        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Mobile Menu --&gt;
+    &lt;div class="hidden md:hidden mobile-menu" id="mobile-menu-3"&gt;
+        &lt;ul class="flex flex-col items-center space-y-2 p-4"&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Pages&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Section&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+                    &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+                    &lt;span&gt;Docs&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="my-4"&gt;
+                &lt;a href="#" class="bg-black font-semibold text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition"&gt;
+                    Buy Now
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>
+// Toggle mobile menu
+document.querySelectorAll('.menu-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const menu = document.getElementById(targetId);
+        menu.classList.toggle('hidden');
+    });
+});
+</code>
+        </pre>
+                </div>
+
+                <!-- Bootstrap Code -->
+                <div class="code-bootstrap hidden">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Bootstrap 5 Version of Transparent Navbar --&gt;
+&lt;nav class="navbar navbar-expand-md bg-transparent"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;span class="navbar-brand fw-bold"&gt;Yofamo Kit Pro&lt;/span&gt;
+
+        &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse3"&gt;
+            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+
+        &lt;div class="collapse navbar-collapse justify-content-end" id="navbarCollapse3"&gt;
+            &lt;ul class="navbar-nav align-items-center me-3"&gt;
+                &lt;li class="nav-item mx-3"&gt;
+                    &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+                        &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" width="14" height="14" /&gt;
+                        &lt;span&gt;Pages&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item mx-3"&gt;
+                    &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+                        &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" width="14" height="14" /&gt;
+                        &lt;span&gt;Section&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item mx-3"&gt;
+                    &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+                        &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" width="14" height="14" /&gt;
+                        &lt;span&gt;Docs&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;a href="#" class="btn btn-dark rounded-pill px-4 py-2 small"&gt;Buy Now&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>// Bootstrap JS 
+    NO - Code
+</code>
+        </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navbar Glassmorphism -->
+    <section class="mt-20 toggle-section max-w-6xl px-5 mx-auto">
+        <div class="flex justify-between my-5">
+            <!-- Name Navbar -->
+            <div
+                class="flex relative items-center bg-white text-black px-6 py-3 rounded-full shadow-lg hover:bg-blue-500 hover:text-white transition duration-300 shine-effect">
+                <!-- Label Top -->
+                <span
+                    class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 bg-blue-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
+                    Blur
+                </span>
+                <h1 class="font-semibold">Navbar Glassmorphism</h1>
+            </div>
+
+            <!-- Toggle Buttons -->
+            <div role="group" class="toggle-group inline-flex rounded-3xl bg-gray-300 p-1 shadow-sm select-none">
+                <button type="button"
+                    class="preview-btn active-toggle flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-transform">
+                    <i class="fas fa-desktop text-gray-600 text-base"></i>
+                    <span>Preview</span>
+                </button>
+                <button type="button"
+                    class="code-btn flex items-center space-x-2 rounded-3xl px-5 py-2 text-gray-700 text-sm font-medium transition-colors">
+                    <i class="fas fa-code text-gray-600 text-base"></i>
+                    <span>Code</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-container w-full">
+            <!-- Preview -->
+            <div
+                class="preview-content flex justify-center h-60 shadow-xl select-none rounded-xl bg-black p-4 overflow-auto">
+                <div class="w-full">
+                    <!-- Navbar -->
+                    <nav class="mx-10 mt-2 rounded-2xl bg-white/60 backdrop-blur-md border border-white/40 text-black">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex items-center justify-between h-16">
+                                <!-- Logo / Brand -->
+                                <div class="flex items-center font-bold">
+                                    Yofamo Kit Pro
+                                </div>
+
+                                <!-- Menu -->
+                                <div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6">
+                                    <ul class="flex space-x-14">
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/dashboard.png" alt="Pages Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Pages</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/sections.png" alt="Section Icon"
+                                                    class="w-3 h-3" />
+                                                <span>Section</span>
+                                            </a>
+                                        </li>
+                                        <li class="move-on-hover">
+                                            <a href="#" class="flex items-center space-x-2 text-sm">
+                                                <img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" />
+                                                <span>Docs</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- Buy Now Button -->
+                                    <a href="#"
+                                        class="ml-6 font-semibold bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition">
+                                        Buy Now
+                                    </a>
+                                </div>
+
+                                <!-- Tombol untuk Mobile -->
+                                <div class="md:hidden">
+                                    <button class="text-gray-700 focus:outline-none menu-toggle"
+                                        data-target="mobile-menu-4">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Mobile -->
+                        <div class="hidden md:hidden mobile-menu" id="mobile-menu-4">
+                            <ul class="flex flex-col items-start space-y-2 p-4">
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" />
+                                        <span>Pages</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" />
+                                        <span>Section</span>
+                                    </a>
+                                </li>
+                                <li class="my-4">
+                                    <a href="#" class="flex items-center space-x-2 text-sm">
+                                        <img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" />
+                                        <span>Docs</span>
+                                    </a>
+                                </li>
+                                <!-- Buy Now Button for Mobile -->
+                                <li class="my-4">
+                                    <a href="#"
+                                        class="bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition">
+                                        Buy Now
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Code -->
+            <div class="relative code-content hidden bg-gray-950 rounded-xl p-4 shadow-lg border border-gray-800">
+                <!-- Header Buttons -->
+                <div class="flex justify-between items-center mb-4">
+                    <!-- Framework Switch -->
+                    <div class="space-x-2">
+                        <button
+                            class="framework-btn btn-tailwind bg-blue-700 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Tailwind
+                        </button>
+                        <button
+                            class="framework-btn btn-bootstrap bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Bootstrap
+                        </button>
+                    </div>
+                    <!-- Control Buttons -->
+                    <div class="space-x-2">
+                        <button
+                            class="copy-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            Copy
+                        </button>
+                        <button
+                            class="show-html-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            HTML
+                        </button>
+                        <button
+                            class="show-js-btn bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1 rounded-md shadow-sm">
+                            JS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tailwind Code -->
+                <div class="code-tailwind">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Navbar --&gt;
+&lt;nav class="mx-10 mt-2 rounded-2xl bg-white/60 backdrop-blur-md border border-white/40 text-black"&gt;
+  &lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;
+    &lt;div class="flex items-center justify-between h-16"&gt;
+      &lt;!-- Logo / Brand --&gt;
+      &lt;div class="flex items-center font-bold"&gt;
+        Yofamo Kit Pro
+      &lt;/div&gt;
+
+      &lt;!-- Menu --&gt;
+      &lt;div class="flex-1 justify-end text-right hidden md:flex items-center space-x-6"&gt;
+        &lt;ul class="flex space-x-14"&gt;
+          &lt;li class="move-on-hover"&gt;
+            &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+              &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+              &lt;span&gt;Pages&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class="move-on-hover"&gt;
+            &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+              &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" /&gt;
+              &lt;span&gt;Section&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class="move-on-hover"&gt;
+            &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+              &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+              &lt;span&gt;Docs&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;a href="#" class="ml-6 font-semibold bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition"&gt;
+          Buy Now
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Tombol untuk Mobile --&gt;
+      &lt;div class="md:hidden"&gt;
+        &lt;button class="text-gray-700 focus:outline-none menu-toggle" data-target="mobile-menu-4"&gt;
+          &lt;svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+            &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Menu Mobile --&gt;
+  &lt;div class="hidden md:hidden mobile-menu" id="mobile-menu-4"&gt;
+    &lt;ul class="flex flex-col items-start space-y-2 p-4"&gt;
+      &lt;li class="my-4"&gt;
+        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+          &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" class="w-3 h-3" /&gt;
+          &lt;span&gt;Pages&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="my-4"&gt;
+        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+          &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" class="w-3 h-3" /&gt;
+          &lt;span&gt;Section&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="my-4"&gt;
+        &lt;a href="#" class="flex items-center space-x-2 text-sm"&gt;
+          &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" class="w-3 h-3" /&gt;
+          &lt;span&gt;Docs&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="my-4"&gt;
+        &lt;a href="#" class="bg-black text-white text-sm px-4 py-2 rounded-4xl shadow-gray-500 shadow-md hover:bg-gray-800 transition"&gt;
+          Buy Now
+        &lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+
+
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>
+// Toggle mobile menu
+document.querySelectorAll('.menu-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const menu = document.getElementById(targetId);
+        menu.classList.toggle('hidden');
+    });
+});
+</code>
+        </pre>
+                </div>
+
+                <!-- Bootstrap Code -->
+                <div class="code-bootstrap hidden">
+                    <pre
+                        class="code-box-html overflow-auto text-sm font-mono bg-gray-900 text-gray-100 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>&lt;!-- Bootstrap 5 Navbar with transparent blur & border --&gt;
+&lt;nav class="navbar navbar-expand-md bg-white bg-opacity-50 border border-white border-opacity-25 backdrop-blur rounded-4 mx-4 mt-3 px-3"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;a class="navbar-brand fw-bold" href="#"&gt;Yofamo Kit Pro&lt;/a&gt;
+
+    &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBlur4"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;div class="collapse navbar-collapse justify-content-end" id="navbarBlur4"&gt;
+      &lt;ul class="navbar-nav align-items-center me-3 gap-4"&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+            &lt;img src="/assets/img/icons/dashboard.png" alt="Pages Icon" width="12" height="12" /&gt;
+            Pages
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+            &lt;img src="/assets/img/icons/sections.png" alt="Section Icon" width="12" height="12" /&gt;
+            Section
+          &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link d-flex align-items-center gap-1 small" href="#"&gt;
+            &lt;img src="/assets/img/icons/docs.png" alt="Docs Icon" width="12" height="12" /&gt;
+            Docs
+          &lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;a href="#" class="btn btn-dark rounded-pill px-4 py-2 small fw-semibold shadow-sm"&gt;
+        Buy Now
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code>
+
+
+
+        </pre>
+                    <pre
+                        class="code-box-js hidden overflow-auto text-sm font-mono bg-gray-900 text-green-200 rounded-lg p-6 whitespace-pre-wrap min-h-[320px] border border-gray-800">
+<code>// Bootstrap JS 
+    NO - Code
+</code>
+        </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="animated-footer"
+        class="bg-gradient-to-b from-transparent to-gray-100 py-10 mt-24 border-t border-gray-300">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Links -->
+                <div class="footer-section">
+                    <h2 class="text-gray-800 font-semibold mb-4">Menu</h2>
+                    <ul class="space-y-2">
+                        <li class="move-on-hover"><a href="#"
+                                class="text-gray-600 hover:text-indigo-600 transition duration-300 hover:underline">Get
+                                Started
+                            </a></li>
+                        <li class="move-on-hover"><a href="#"
+                                class="text-gray-600 hover:text-indigo-600 transition duration-300 hover:underline">Browse
+                                Navbar</a>
+                        </li>
+                        <li class="move-on-hover"><a href="#"
+                                class="text-gray-600 hover:text-indigo-600 transition duration-300 hover:underline">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h2 class="text-gray-800 font-semibold mb-4">Stay Updated</h2>
+                    <form class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+                        <input type="email" placeholder="Your email"
+                            class="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+                        <button
+                            class="px-6 py-2 bg-black text-white rounded-full transition duration-300 move-on-hover">Subscribe</button>
+                    </form>
+                </div>
+
+                <!-- Socials -->
+                <div class="footer-section">
+                    <h2 class="text-gray-800 font-semibold mb-4 flex justify-center md:justify-end">Follow Us</h2>
+                    <div class="flex justify-center md:justify-end space-x-4 text-gray-600">
+                        <a href="#" class="hover:text-indigo-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-indigo-600 transition"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-gray-400 text-sm text-center mt-10">
+                &copy; 2025 Yofamo Kit — Designed by
+                <a href="#" class="underline hover:text-indigo-600 transition">YofamoThemes</a>.
+            </p>
+        </div>
+    </footer>
+
+
+
+    <!-- Import JS -->
+    <script src="/assets/js/toggle.js"></script>
+    <script src="/assets/js/navstack.js"></script>
+    <script src="/assets/js/dropdown.js"></script>
+
+    <!-- GSAP Wave Animation -->
+    <script>
+        const wave1 = document.querySelector('#wave1');
+        const wave2 = document.querySelector('#wave2');
+        const wave3 = document.querySelector('#wave3');
+
+        function animateWave(wave, baseY, amp1, amp2, duration) {
+            gsap.to(wave, {
+                duration: duration,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                keyframes: [
+                    {
+                        attr: {
+                            d: `M0,${baseY} Q360,${baseY + amp1} 720,${baseY} T1440,${baseY} V800 H0 Z`
+                        }
+                    },
+                    {
+                        attr: {
+                            d: `M0,${baseY} Q360,${baseY - amp2} 720,${baseY} T1440,${baseY} V800 H0 Z`
+                        }
+                    }
+                ]
+            });
+
+            gsap.to(wave, {
+                x: 5,
+                duration: duration / 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+
+        animateWave(wave1, 600, 140, 90, 3.5);
+        animateWave(wave2, 500, 90, 70, 3);
+        animateWave(wave3, 400, 70, 50, 2.5);
+
+        gsap.to([wave1, wave2, wave3], {
+            y: 20,
+            duration: 4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    </script>
+
+    <script>
+        const img = document.querySelector("img[alt='3D Navbar Illustration']");
+
+        // Setup awal
+        gsap.set(img, {
+            transformPerspective: 600,
+            transformOrigin: "center",
+        });
+
+        img.addEventListener("mousemove", (e) => {
+            const bounds = img.getBoundingClientRect();
+            const centerX = bounds.left + bounds.width / 2;
+            const centerY = bounds.top + bounds.height / 2;
+
+            const deltaX = e.clientX - centerX;
+            const deltaY = e.clientY - centerY;
+
+            // Batas maksimal rotasi
+            const maxRotate = 10;
+
+            const rotateY = gsap.utils.clamp(-maxRotate, maxRotate, deltaX / 10);
+            const rotateX = gsap.utils.clamp(-maxRotate, maxRotate, -deltaY / 10);
+
+            gsap.to(img, {
+                rotationY: rotateY,
+                rotationX: rotateX,
+                scale: 1.06,
+                duration: 0.4,
+                ease: "power2.out"
+            });
+        });
+
+        img.addEventListener("mouseleave", () => {
+            gsap.to(img, {
+                rotationX: 0,
+                rotationY: 0,
+                scale: 1,
+                duration: 0.6,
+                ease: "power2.out"
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Seleksi semua elemen dengan class 'fade-in-left'
+            document.querySelectorAll('.fade-in-left').forEach((el) => {
+                // Buat timeline animasi
+                gsap.fromTo(el,
+                    { x: -100, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        duration: 1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 80%',
+                            toggleActions: 'play none none reset', // reset agar bisa muncul berulang kali
+                            once: false,
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Reusable animasi: muncul dari bawah
+            document.querySelectorAll('.fade-in-bottom').forEach((el) => {
+                gsap.fromTo(el,
+                    { y: 100, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 80%',
+                            toggleActions: 'play none none reset',
+                            once: false,
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('article').forEach(card => {
+            const video = card.querySelector('video');
+            if (!video) return;
+
+            card.addEventListener('mouseenter', () => {
+                video.currentTime = 0;
+                video.play();
+
+                const maxDuration = parseInt(video.dataset.maxduration, 10) || 5;
+                video._stopTimeout = setTimeout(() => {
+                    video.pause();
+                    video.currentTime = 0;
+                }, maxDuration * 1000);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+                clearTimeout(video._stopTimeout);
+            });
+        });
+    </script>
+
+    <!-- Animation Shine -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.shine-effect');
+
+            buttons.forEach(button => {
+                const shine = document.createElement('div');
+                Object.assign(shine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '-120%',
+                    width: '100%',
+                    height: '100%',
+                    background: 'linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent)',
+                    transform: 'skewX(-20deg)',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    zIndex: 10,
+                });
+
+                button.style.position = 'relative'; // Ensure relative for shine positioning
+                button.appendChild(shine);
+
+                const animateShine = () => {
+                    const timeline = gsap.timeline({
+                        onComplete: () => {
+                            shine.style.left = '-120%';
+                            shine.style.opacity = 0;
+                            setTimeout(animateShine, 3000 + Math.random() * 1000); // Optional: Add random delay to desync
+                        }
+                    });
+
+                    timeline
+                        .to(button, {
+                            scale: 1.05,
+                            duration: 0.3,
+                            ease: 'power1.out'
+                        }, 0)
+                        .to(shine, {
+                            left: '120%',
+                            opacity: 1,
+                            duration: 2.2,
+                            ease: 'power2.inOut'
+                        }, 0)
+                        .to(button, {
+                            scale: 1,
+                            duration: 0.3,
+                            ease: 'power1.in'
+                        }, 1.7);
+                };
+
+                animateShine(); // Run on each button
+            });
+        });
+    </script>
+
+    <!-- Animation Footer Script -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".footer-section").forEach((section, index) => {
+            gsap.fromTo(section,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#animated-footer",
+                        start: "top bottom",
+                        end: "bottom bottom",
+                        toggleActions: "restart none none reset", // restart every time visible
+                        scrub: false,
+                        once: false // allow repeated animation
+                    }
+                }
+            );
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.code-content').forEach(container => {
+            const btnHtml = container.querySelector('.show-html-btn');
+            const btnJs = container.querySelector('.show-js-btn');
+            const btnCopy = container.querySelector('.copy-btn');
+
+            const btnTailwind = container.querySelector('.btn-tailwind');
+            const btnBootstrap = container.querySelector('.btn-bootstrap');
+
+            const sectionTailwind = container.querySelector('.code-tailwind');
+            const sectionBootstrap = container.querySelector('.code-bootstrap');
+
+            function getVisibleSection() {
+                return !sectionTailwind.classList.contains('hidden') ? sectionTailwind : sectionBootstrap;
+            }
+
+            btnHtml.addEventListener('click', () => {
+                const section = getVisibleSection();
+                section.querySelector('.code-box-html').classList.remove('hidden');
+                section.querySelector('.code-box-js').classList.add('hidden');
+            });
+
+            btnJs.addEventListener('click', () => {
+                const section = getVisibleSection();
+                section.querySelector('.code-box-js').classList.remove('hidden');
+                section.querySelector('.code-box-html').classList.add('hidden');
+            });
+
+            btnCopy.addEventListener('click', () => {
+                const section = getVisibleSection();
+                const visibleBox = section.querySelector('.code-box-html').classList.contains('hidden')
+                    ? section.querySelector('.code-box-js')
+                    : section.querySelector('.code-box-html');
+                const codeText = visibleBox.querySelector('code').innerText;
+
+                navigator.clipboard.writeText(codeText).then(() => {
+                    const originalText = btnCopy.textContent;
+                    btnCopy.textContent = 'Copied!';
+                    btnCopy.classList.add('bg-green-600');
+
+                    setTimeout(() => {
+                        btnCopy.textContent = originalText;
+                        btnCopy.classList.remove('bg-green-600');
+                    }, 1500);
+                });
+            });
+
+            // Framework switch
+            btnTailwind.addEventListener('click', () => {
+                sectionTailwind.classList.remove('hidden');
+                sectionBootstrap.classList.add('hidden');
+            });
+
+            btnBootstrap.addEventListener('click', () => {
+                sectionBootstrap.classList.remove('hidden');
+                sectionTailwind.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>

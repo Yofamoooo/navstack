@@ -1,0 +1,461 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta Tags -->
+    <title>NavStack — Responsive Navbar Component Library</title>
+    <meta name="title" content="NavStack — Responsive Navbar Component Library">
+    <meta name="description"
+        content="NavStack is a curated collection of modern, responsive, and reusable navbar components. Easily plug stylish navbars into your website using Tailwind CSS, Bootstrap, or Vanilla CSS.">
+
+    <!-- Keywords -->
+    <meta name="keywords"
+        content="navbar, navigation bar, nav, Tailwind navbar, Bootstrap navbar, responsive menu, HTML CSS nav, UI components, frontend">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://navstack.dev/">
+    <meta property="og:title" content="NavStack — Responsive Navbar Component Library">
+    <meta property="og:description"
+        content="Modern, reusable, and responsive navbar components for web developers. Easy to integrate, beautifully designed.">
+    <meta property="og:image" content="https://navstack.dev/cover.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://navstack.dev/">
+    <meta property="twitter:title" content="NavStack — Responsive Navbar Component Library">
+    <meta property="twitter:description"
+        content="Modern, reusable, and responsive navbar components for web developers. Easy to integrate, beautifully designed.">
+    <meta property="twitter:image" content="https://navstack.dev/cover.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Link ke CSS Bootstrap -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-right: 6px;
+        }
+
+        .hover-link:hover {
+            color: #6366f1 !important;
+            /* Indigo-ish color */
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg bg-light border-bottom py-4">
+        <div class="container">
+            <!-- Logo kiri -->
+            <a class="navbar-brand fw-bold" href="#">NavbarStack</a>
+
+            <!-- Toggle untuk mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarRightMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu kanan -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarRightMenu">
+                <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+                    <!-- Get Started menu dengan icon -->
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="/public/index.html">
+                            <img src="/assets/img/icons/shuttle.png" class="nav-icon" alt="icon">
+                            Get Started
+                        </a>
+                    </li>
+
+                    <!-- Dropdown menu -->
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown">
+                            <img src="/assets/img/icons/online.png" class="nav-icon" alt="dropdown-icon">
+                            Browser Navbar
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="/public/navbar-tailwind.html">
+                                    <img src="/assets/img/icons/Tailwind CSS.png" class="nav-icon" alt="tailwind">
+                                    Tailwind Navbar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="/public/navbar-boostrap.html">
+                                    <img src="/assets/img/icons/Bootstrap.png" class="nav-icon" alt="bootstrap">
+                                    Bootstrap Navbar
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Contact Me -->
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <img src="/assets/img/icons/contact.png" class="nav-icon" alt="icon">
+                            Contact Me
+                        </a>
+                    </li>
+
+                    <!-- Button Get Started -->
+                    <li class="nav-item">
+                        <a href="/public/index.html" class="btn btn-dark">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="my-5">
+        <article class="card p-4 mx-auto" style="max-width:800px;">
+            <div class="d-flex justify-content-center gap-2 mb-4">
+                <button class="btn btn-primary" id="preview-button">Preview</button>
+                <button class="btn btn-outline-secondary" id="code-button">Code</button>
+                <button class="btn btn-outline-secondary" id="edit-button" data-bs-toggle="modal"
+                    data-bs-target="#editModal">Edit</button>
+            </div>
+            <div id="preview-panel"></div>
+            <div id="code-panel" class="d-none bg-dark text-light p-3 rounded">
+                <div class="d-flex justify-content-between mb-2">
+                    <div>
+                        <button class="btn btn-sm btn-primary me-2" id="html-btn">HTML</button>
+                        <button class="btn btn-sm btn-secondary" id="js-btn">JS</button>
+                    </div>
+                    <button class="btn btn-sm btn-success" id="copy-btn">Copy</button>
+                </div>
+                <pre
+                    class="bg-black rounded p-2 overflow-auto"><code id="code-block" class="language-html"></code></pre>
+            </div>
+        </article>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-3">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Navbar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="edit-form">
+                    <div class="modal-body row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Navbar Background</label>
+                                <input type="color" id="bgColor" class="form-control form-control-color"
+                                    value="#ffffff">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Text Color</label>
+                                <input type="color" id="textColor" class="form-control form-control-color"
+                                    value="#000000">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Position</label>
+                                <select id="navbarPosition" class="form-select">
+                                    <option value="static">Static</option>
+                                    <option value="sticky">Sticky</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Menu Items</label>
+                            <div id="menu-items" class="d-grid gap-2 mb-2"></div>
+                            <button type="button" id="add-menu" class="btn btn-link p-0">+ Add Menu Item</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" id="reset-settings" class="btn btn-link text-danger">Reset to
+                            default</button>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <footer id="animated-footer" class="bg-light border-top pt-5 pb-5 ">
+
+        <div class="container">
+            <div class="row text-center text-md-start mb-5">
+                <!-- Menu -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-dark fw-semibold mb-3">Menu</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link d-block mb-2">Get
+                                Started</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link d-block mb-2">Browse
+                                Navbar</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link d-block mb-2">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-dark fw-semibold mb-3">Stay Updated</h5>
+                    <form class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="email" class="form-control" placeholder="Your email" />
+                        <button class="btn btn-dark rounded-pill">Subscribe</button>
+                    </form>
+                </div>
+
+                <!-- Socials -->
+                <div class="col-md-4 mb-4 text-center text-md-end">
+                    <h5 class="text-dark fw-semibold mb-3">Follow Us</h5>
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3 fs-5">
+                        <a href="#" class="text-secondary hover-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-secondary hover-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-muted small text-center mt-4 mb-3">
+                &copy; 2025 Yofamo Kit — Designed by
+                <a href="#" class="text-decoration-underline text-secondary">YofamoThemes</a>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Link ke JavaScript Bootstrap -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const previewBtn = document.getElementById("preview-button"),
+                codeBtn = document.getElementById("code-button"),
+                editBtn = document.getElementById("edit-button"),
+                htmlBtn = document.getElementById("html-btn"),
+                jsBtn = document.getElementById("js-btn"),
+                copyBtn = document.getElementById("copy-btn"),
+                previewPanel = document.getElementById("preview-panel"),
+                codePanel = document.getElementById("code-panel"),
+                codeBlock = document.getElementById("code-block"),
+                bgColor = document.getElementById("bgColor"),
+                textColor = document.getElementById("textColor"),
+                navbarPosition = document.getElementById("navbarPosition"),
+                menuItems = document.getElementById("menu-items"),
+                addMenu = document.getElementById("add-menu"),
+                editForm = document.getElementById("edit-form"),
+                resetBtn = document.getElementById("reset-settings");
+
+            let currentTab = "html";
+
+            function setActive(btn) {
+                [previewBtn, codeBtn, editBtn].forEach(b => b.classList.replace("btn-primary", "btn-outline-secondary"));
+                btn.classList.replace("btn-outline-secondary", "btn-primary");
+            }
+
+            function createEntry(data = { type: "link", label: "", items: [] }) {
+                const div = document.createElement("div");
+                div.className = "d-grid gap-2 border p-2 rounded";
+                div.innerHTML = `
+      <select class="form-select form-select-sm mb-1 type">
+        <option value="link">Link</option>
+        <option value="dropdown">Dropdown</option>
+      </select>
+      <input class="form-control form-control-sm mb-1 label" placeholder="Label" value="${data.label}">
+      <div class="subs mb-1"></div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-outline-danger remove">×</button>
+        <button class="btn btn-sm btn-outline-primary toggleSubs" style="display:none">Edit Subs</button>
+      </div>
+    `;
+
+                const subs = div.querySelector(".subs"),
+                    toggle = div.querySelector(".toggleSubs"),
+                    type = div.querySelector(".type"),
+                    remove = div.querySelector(".remove");
+
+                function createSubRow(val) {
+                    const row = document.createElement("div");
+                    row.className = "input-group mb-1";
+                    row.innerHTML = `<input class="form-control form-control-sm subitem" value="${val}"><button class="btn btn-sm btn-outline-danger rem-sub" type="button">×</button>`;
+                    row.querySelector(".rem-sub").onclick = () => row.remove();
+                    return row;
+                }
+
+                function buildSubs() {
+                    subs.innerHTML = "";
+                    if (type.value !== "dropdown") {
+                        subs.classList.add("d-none");
+                        toggle.style.display = "none";
+                        return;
+                    }
+                    subs.classList.remove("d-none");
+                    toggle.style.display = "inline-block";
+                    (data.items || []).forEach(lbl => subs.appendChild(createSubRow(lbl)));
+                    const add = document.createElement("button");
+                    add.type = "button";
+                    add.className = "btn btn-sm btn-outline-secondary";
+                    add.textContent = "+ Add sub";
+                    add.onclick = () => subs.insertBefore(createSubRow(""), add);
+                    subs.appendChild(add);
+                }
+
+                type.onchange = () => buildSubs();
+                toggle.onclick = () => subs.classList.toggle("d-none");
+                remove.onclick = () => div.remove();
+                type.value = data.type;
+                buildSubs();
+
+                return div;
+            }
+
+            function loadSettings() {
+                let s = JSON.parse(localStorage.getItem("navbarSettings")) || { bg: "#ffffff", txt: "#000000", pos: "sticky" };
+                bgColor.value = s.bg;
+                textColor.value = s.txt;
+                navbarPosition.value = s.pos;
+
+                let menu = JSON.parse(localStorage.getItem("menuData")) || [
+                    { type: "link", label: "Home" },
+                    { type: "dropdown", label: "More", items: ["Team", "FAQ"] }
+                ];
+                renderForm(menu);
+                renderPreview(menu, s);
+            }
+
+            function renderForm(menuArr) {
+                menuItems.innerHTML = "";
+                menuArr.forEach(d => menuItems.appendChild(createEntry(d)));
+            }
+
+            function renderPreview(menuArr, s) {
+                previewPanel.innerHTML = generateHTML(menuArr, s) + "<script>" + generateJS() + "<\/script>";
+                localStorage.setItem("navbarSettings", JSON.stringify(s));
+                localStorage.setItem("menuData", JSON.stringify(menuArr));
+            }
+
+            function generateHTML(menuArr, s) {
+                const cls = s.pos === "sticky" ? "sticky-top" : "";
+                const bg = s.bg, txt = s.txt;
+                let links = "";
+                menuArr.forEach(item => {
+                    if (item.type === "link") {
+                        links += `<li class="nav-item"><a class="nav-link" style="color:${txt}" href="#">${item.label}</a></li>`;
+                    } else {
+                        const id = "dd" + item.label.replace(/\s/g, "");
+                        let subs = item.items.map(sub => `<li><a class="dropdown-item" href="#">${sub}</a></li>`).join("");
+                        links += `
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="${id}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:${txt}">${item.label}</a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded" aria-labelledby="${id}">${subs}</ul>
+          </li>`;
+                    }
+                });
+                return `
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm border-bottom ${cls}" style="background-color:${bg}">
+  <div class="container">
+    <a class="navbar-brand fw-bold" style="color:${txt}" href="#">
+      MyBrand
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">${links}</ul>
+    </div>
+  </div>
+</nav>`;
+            }
+
+            function generateJS() {
+                return `document.querySelector(".navbar-toggler").addEventListener("click", ()=> {
+      document.getElementById("navMenu").classList.toggle("show");
+    });`;
+            }
+
+            function updateCode() {
+                const menuArr = Array.from(menuItems.children).map(div => {
+                    const type = div.querySelector(".type").value;
+                    const label = div.querySelector(".label").value;
+                    const items = type === "dropdown" ? Array.from(div.querySelectorAll(".subitem")).map(i => i.value).filter(Boolean) : [];
+                    return { type, label, items };
+                });
+                const s = { bg: bgColor.value, txt: textColor.value, pos: navbarPosition.value };
+                codeBlock.textContent = currentTab === "html" ? generateHTML(menuArr, s) : generateJS();
+                codeBlock.className = currentTab === "html" ? "language-html" : "language-js";
+                Prism.highlightElement(codeBlock);
+            }
+
+            loadSettings();
+
+            previewBtn.onclick = () => {
+                setActive(previewBtn);
+                codePanel.classList.add("d-none");
+                previewPanel.classList.remove("d-none");
+            };
+            codeBtn.onclick = () => {
+                currentTab = "html";
+                setActive(codeBtn);
+                codePanel.classList.remove("d-none");
+                previewPanel.classList.add("d-none");
+                updateCode();
+            };
+            htmlBtn.onclick = () => { currentTab = "html"; updateCode(); };
+            jsBtn.onclick = () => { currentTab = "js"; updateCode(); };
+            copyBtn.onclick = () => {
+                navigator.clipboard.writeText(codeBlock.textContent);
+                copyBtn.textContent = "Copied!";
+                setTimeout(() => copyBtn.textContent = "Copy", 1500);
+            };
+            addMenu.onclick = () => menuItems.appendChild(createEntry());
+            resetBtn.onclick = () => { localStorage.clear(); location.reload(); };
+
+            editForm.onsubmit = e => {
+                e.preventDefault();
+                const menuArr = Array.from(menuItems.children).map(div => {
+                    const type = div.querySelector(".type").value;
+                    const label = div.querySelector(".label").value;
+                    const items = type === "dropdown" ? Array.from(div.querySelectorAll(".subitem")).map(i => i.value).filter(Boolean) : [];
+                    return { type, label, items };
+                });
+                const s = { bg: bgColor.value, txt: textColor.value, pos: navbarPosition.value };
+                renderPreview(menuArr, s);
+                updateCode();
+                bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
+                setActive(previewBtn);
+                previewPanel.classList.remove("d-none");
+                codePanel.classList.add("d-none");
+            };
+        });
+    </script>
+
+</body>
+
+</html>
